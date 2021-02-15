@@ -1,0 +1,13 @@
+# Reproduce error steps:
+
+0. install pytorch, nodejs + onnxjs
+1. python save_model.py
+2. python -m transformers.convert_graph_to_onnx --model ./model --framework pt --tokenizer distilbert-base-uncased onnx/out.onnx
+3. node index.js
+
+# Output
+RuntimeError: abort(TypeError: cannot resolve operator 'Shape' with opsets: ai.onnx v11). Build with -s ASSERTIONS=1 for more info.
+    at process.abort (C:\Users\marki\doc_proc_bot\app\node_modules\onnxjs\dist\onnx-wasm.js:9:13921)
+    at process.emit (events.js:314:20)
+    at processPromiseRejections (internal/process/promises.js:209:33)
+    at processTicksAndRejections (internal/process/task_queues.js:98:32)
